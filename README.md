@@ -2,15 +2,23 @@
 
 ## Structure
 
-  * Data
-    * Images
-      * Cans
-        * Coke
-  * Trainer
-    * Cascade
-  * Util
-    * Image_Collector
+  * data
+    * images
+      * cans
+        * coke
+  * model
+    * cascade
+  * util
+    * image_collector
 
+- data: data sources to build a model based upon.
+  - iamges: image data
+    - cans: iamge data of cans
+      - image data of coke cans
+- model: includes trainer and constructed model.
+  - cascade: cascade classifier trainer and its model.
+- util: generic scripts for other programs
+  - image_collector: collect images from ImageNet
 
 ## Extraction and Matching
 
