@@ -32,11 +32,11 @@ What is the unique attribute that a can of Coke have? May be:
 
 We call these attributes as featuers. We can do pattern match with these attributes. Before moving on, I recommend you to go over Outline of object recognition (Wikipedia) .
 
-We determine to use SURF for real-time object detection with OpenCV. this video introduces very well about theory and implementation the SURF real-time object detection. .
+We determine to use SURF for real-time object detection with OpenCV. [this video](https://www.youtube.com/watch?v=ZXn69V-1kEM) introduces very well about theory and implementation the SURF real-time object detection. .
 
-To find a particular object, we may use Haar-Cascade Classifiers. This Self Driving RC Car by Zheng Wang explains how to implement real-time object detection with Haar-Cascade Classifiers. More details on how to train the classifier can be found a post by Thorsten Ball .
+To find a particular object, we may use Haar-Cascade Classifiers. [This Self Driving RC Car by Zheng Wang](https://zhengludwig.wordpress.com/projects/self-driving-rc-car/) explains how to implement real-time object detection with Haar-Cascade Classifiers. More details on how to train the classifier can be found in [a post by Thorsten Ball](http://coding-robin.de/2013/07/22/train-your-own-opencv-haar-classifier.html).
 
-OpenCV supports Cascade Classification. Official OpenCV Document on Cascade Classification gives explanation about its theoritical background and implementation. Cascade Classifier Training process is explained here. I recommend to refer to the official document when actually implementing the Cascade Classifier with OpenCV.
+OpenCV supports Cascade Classification. [Official OpenCV Document](http://docs.opencv.org/2.4/modules/objdetect/doc/cascade_classification.html) on Cascade Classification gives explanation about its theoritical background and implementation. Cascade Classifier Training process is explained [here](http://docs.opencv.org/2.4/doc/user_guide/ug_traincascade.html). I recommend to refer to the official document when actually implementing the Cascade Classifier with OpenCV.
 
 Quick note on Cascade Classifier with OpenCV:
 
@@ -50,7 +50,7 @@ Quick note on Cascade Classifier with OpenCV:
   * Negative examples sometimes called background samples or background sample images.
   * Opencv provides many command line arguments to prepare examples for classification.
   * To capture images from a video, OpenCV has VideoCapture function.
-  * OpenCV, opencv_traincascade, fucntion train prepared examples.
+  * OpenCV, opencv_traincascade, fucntion [train prepared examples](http://docs.opencv.org/2.4/modules/highgui/doc/reading_and_writing_images_and_video.html#videocapture-set).
   1. Common arguments: specify basic information to train.
   2. Cascade parameters: specify stage type (only boosted classifier is supported today), feature type (Haar-like feature olocal binary petterns), and width and height (should exactly same values as used during training samples creation).
   3. Boosted classfier parameters: type, minimal desired hit rate, max false alarm rate, weight trim rate, max depth, anmax weak count.
