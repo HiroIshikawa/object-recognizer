@@ -5,7 +5,7 @@
   * data: data sources to build a model based upon
     * images: image data
       * cans: image data of cans
-        * coke¥: image data of coke cans
+        * coke: image data of coke cans
   * model: includes trainer and constructed model
     * cascade: cascade classifier trainer and its model
   * util: generic scripts for other programs
