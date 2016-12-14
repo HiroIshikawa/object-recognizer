@@ -1,5 +1,17 @@
 # object-recognizer
 
+## Structure
+
+  * Data
+    * Images
+      * Cans
+        * Coke
+  * Trainer
+    * Cascade
+  * Util
+    * Image_Collector
+
+
 ## Extraction and Matching
 
 The most recent proejct I am working on is the Robot Arm object detection with images. How can we point a particular object from an image or a video?
