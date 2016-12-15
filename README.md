@@ -16,28 +16,9 @@
     * cascade_sampling: obsolute folders/files for initial cascade training attempt
 
 
-## Extraction and Matching
+## Cascade Classification Intro
 
-The most recent proejct I am working on is the Robot Arm object detection with images. How can we point a particular object from an image or a video?
-
-First of all, we need to define the spec of inputs:
-
-  * An image is a 2d matrix which each elements has its pixel values.
-  * A video is a stack of 2d matrix which ordered in the frame rate. 
-
-
-Lets think about processing an image for a object detection. Our goal is to detect a can of Coke from the iamge.
-What is the unique attribute that a can of Coke have? May be:
-
-  * Shape as a can
-  * Shape of Logo
-  * Color ratio (red / white)
-
-We call these attributes as featuers. We can do pattern match with these attributes. Before moving on, I recommend you to go over Outline of object recognition (Wikipedia) .
-
-We determine to use SURF for real-time object detection with OpenCV. [this video](https://www.youtube.com/watch?v=ZXn69V-1kEM) introduces very well about theory and implementation the SURF real-time object detection. .
-
-To find a particular object, we may use Haar-Cascade Classifiers. [This Self Driving RC Car by Zheng Wang](https://zhengludwig.wordpress.com/projects/self-driving-rc-car/) explains how to implement real-time object detection with Haar-Cascade Classifiers. More details on how to train the classifier can be found in [a post by Thorsten Ball](http://coding-robin.de/2013/07/22/train-your-own-opencv-haar-classifier.html).
+To find a particular object, we decided to use Haar-Cascade Classifiers. [This Self Driving RC Car by Zheng Wang](https://zhengludwig.wordpress.com/projects/self-driving-rc-car/) explains how to implement real-time object detection with Haar-Cascade Classifiers. More details on how to train the classifier can be found in [a post by Thorsten Ball](http://coding-robin.de/2013/07/22/train-your-own-opencv-haar-classifier.html).
 
 OpenCV supports Cascade Classification. [Official OpenCV Document](http://docs.opencv.org/2.4/modules/objdetect/doc/cascade_classification.html) on Cascade Classification gives explanation about its theoritical background and implementation. Cascade Classifier Training process is explained [here](http://docs.opencv.org/2.4/doc/user_guide/ug_traincascade.html). I recommend to refer to the official document when actually implementing the Cascade Classifier with OpenCV.
 
@@ -60,9 +41,7 @@ Quick note on Cascade Classifier with OpenCV:
   4. Haar-like feature parameters: mode (BASIC:use only upright features, or ALL:full set of upright and 45 degree rotatefeature set).
   5. Local Binary Patterns parameters: no param available
 
-We sampled 80 images of coffee cup and 1000 negatives for testing out how the cascade works.
 To be accurate, 1000 positives and 5000 negatives are suggested in some articles.
-
 
 ## Cascade Classifier Testing Process
 
