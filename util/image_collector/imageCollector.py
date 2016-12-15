@@ -1,31 +1,48 @@
-import urllib
+# open arbitrary resources (https://docs.python.org/2/library/urllib.html)
+import urllib2
 
 # urlsFile = 'cokeURL.txt'
 urlsFile = 'cansURL.txt'
-
 # reading lines of txt file (URLs)
 urls = tuple(open(urlsFile, 'r'))
-
 # id number for writing images
 numbering = 0
-
 # stop iterations to downloads
-iterations = 50
+iterations = 100
 
+# iterate the txt file contains urls line by line
 for url in urls:
+	# notify which iteration you are in
 	print iterations
+	# make a string for a path name to write the file in
 	writePath = 'downloads/' + str(numbering) + '.jpg'
+	# open a file to write in with the writePath name defined
 	f = open(writePath,'wb')
-	img = urllib.urlopen(url).read()
-	if img:
-		f.write(img)
-		# increment image numbering 
-		numbering += 1
-		# increment counts towards topper
-		iterations -= 1
-	
-	# if k iterations
+	try:
+		# retrieve resource with the url defined
+		response = urllib2.urlopen(url, timeout=0.1)
+	except urllib2.URLError as err:
+		print 'URL error happend'
+		pass
+	except IOError:
+		pass
+	else:
+		# print response
+		print response
+		# if image is loaded successfully
+		if response:
+			# read the image
+			img = response.read()
+			# write actually the fetched image in the file location
+			f.write(img)
+			# increment image numbering
+			numbering += 1
+			# increment counts towards topper
+			iterations -= 1
+		
+		# if k images downloaded, stop iteration
 	if (iterations <= 0):
 		break
 
+# close the file for safety
 f.close()

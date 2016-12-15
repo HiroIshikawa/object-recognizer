@@ -55,4 +55,9 @@ Quick note on Cascade Classifier with OpenCV:
   2. Cascade parameters: specify stage type (only boosted classifier is supported today), feature type (Haar-like feature olocal binary petterns), and width and height (should exactly same values as used during training samples creation).
   3. Boosted classfier parameters: type, minimal desired hit rate, max false alarm rate, weight trim rate, max depth, anmax weak count.
   4. Haar-like feature parameters: mode (BASIC:use only upright features, or ALL:full set of upright and 45 degree rotatefeature set).
-  5. Local Binary Patterns parameters: no param availabl
+  5. Local Binary Patterns parameters: no param available
+
+## References:
+
+[Tutorial: OpenCV harrtraining(Rapid Object Detection with a Cascade of Boosted Classifiers Based on Haar-like Features.)](note.sonots.com/SciSoftware/haartraining.html)
+
