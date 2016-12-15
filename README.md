@@ -8,8 +8,11 @@
         * coke: image data of coke cans
   * model: includes trainer and constructed model
     * cascade: cascade classifier trainer and its model
+      * cascade_generator: generate cascade
+      * cascade_testor: test generated cascade
   * util: generic scripts for other programs
-    * image_collector: collect images from ImageNet
+    * collector: collect images from ImageNet
+    * cascade_sampling: obsolute folders/files for initial cascade training attempt
 
 
 ## Extraction and Matching
