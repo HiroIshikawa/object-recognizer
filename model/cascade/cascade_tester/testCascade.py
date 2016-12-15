@@ -5,6 +5,20 @@ import sys
 imagePath = sys.argv[1]
 cascPath = sys.argv[2]
 
+def detect(cascade, img):
+    rects = cascade.detectMultiScale(img, 1.3, 4, cv2.cv.CV_HAAR_SCALE_IMAGE, (20,20))
+
+    if len(rects) == 0:
+        return [], img
+    rects[:, 2:] += rects[:, :2]
+    return rects, img
+
+def box(rects, img):
+    for x1, y1, x2, y2 in rects:
+        cv2.rectangle(img, (x1, y1), (x2, y2), (127, 255, 0), 2)
+    cv2.imwrite('one.jpg', img);
+
+
 # Create the haar cascade
 cascade = cv2.CascadeClassifier(cascPath)
 
@@ -12,23 +26,8 @@ cascade = cv2.CascadeClassifier(cascPath)
 image = cv2.imread(imagePath)
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-print 'Finish reading image and converted it to gray scale.'
+rects, img = detect(cascade, gray)
+box(rects, img)
 
-# Detect faces in the image
-cascades = cascade.detectMultiScale(
-    gray,
-    scaleFactor=1.1,
-    minNeighbors=5,
-    minSize=(30, 30),
-    flags = cv2.cv.CV_HAAR_SCALE_IMAGE
-)
-
-print("Found {0} faces!".format(len(cascades)))
-
-# Draw a rectangle around the faces
-for (x, y, w, h) in cascades:
-    cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2)
-
-cv2.imwrite(".", image);
 cv2.imshow("Cups found", image)
 cv2.waitKey(0)

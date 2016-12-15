@@ -29,7 +29,6 @@ What is the unique attribute that a can of Coke have? May be:
   * Shape of Logo
   * Color ratio (red / white)
 
-
 We call these attributes as featuers. We can do pattern match with these attributes. Before moving on, I recommend you to go over Outline of object recognition (Wikipedia) .
 
 We determine to use SURF for real-time object detection with OpenCV. [this video](https://www.youtube.com/watch?v=ZXn69V-1kEM) introduces very well about theory and implementation the SURF real-time object detection. .
@@ -80,6 +79,6 @@ To be accurate, 1000 positives and 5000 negatives are suggested in some articles
 
 [Creating a Cascade of Haar-Like Classifiers: Step by Step](https://www.cs.auckland.ac.nz/~m.rezaei/Tutorials/Creating_a_Cascade_of_Haar-Like_Classifiers_Step_by_Step.pdf)
 
-[Haar Cascade Training Tutorial](http://www.trevorsherrard.com/Haar_training.html)
+[Haar Cascade Training Tutorial](http://www.trevorsherrard.com/Haar_training.html) : with python script to test cascade file using webcam in real-time with box drawing around target object.
 
-[Cascade Classifier Training](http://docs.opencv.org/2.4/doc/user_guide/ug_traincascade.html#positive-samples) : with python script to test cascade file using webcam in real-time with box drawing around target object.
+[Cascade Classifier Training](http://docs.opencv.org/2.4/doc/user_guide/ug_traincascade.html#positive-samples)
