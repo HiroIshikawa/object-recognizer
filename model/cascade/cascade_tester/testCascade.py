@@ -29,5 +29,6 @@ gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 rects, img = detect(cascade, gray)
 box(rects, img)
 
+
 cv2.imshow("Cups found", image)
 cv2.waitKey(0)
