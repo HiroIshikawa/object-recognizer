@@ -87,3 +87,5 @@ To be accurate, 1000 positives and 5000 negatives are suggested in some articles
 [Cascade Classifier Training](http://docs.opencv.org/2.4/doc/user_guide/ug_traincascade.html#positive-samples)
 
 [Using AWS to Train Cascade Classifier](https://github.com/kburnham/DAND-Right-Whale-Identification/blob/master/Using%20AWS%20to%20Train%20a%20Cascade%20Classifier.md)
+
+[Creating your own Haar Cascade OpenCV Python Tutorial](https://pythonprogramming.net/haar-cascade-object-detection-python-opencv-tutorial/)
