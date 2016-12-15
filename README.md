@@ -66,15 +66,15 @@ To be accurate, 1000 positives and 5000 negatives are suggested in some articles
 1. Get negative sample images and put it in './negatives' (NOT containing object that you want to recognize)
 2. Get a source positive sample image and put it in './positive_source' (containing object that you want to recognize)
 3. Generate .txt for negative samples [find ./negatives -iname "*.jpg" > negatives.txt]
-4. Generate complete positive images to train on [opencv_createsamples -img positive_source/'image-name'.jpg -bg negatives.txt -info annotations.lst -maxxangle 0.5 -maxyangle 0.5 -maxzangle 2.0 -w 80 -h 40]
-5. Convert annotations.lst to vector file [touch coffeeCup.vec && opencv_createsamples -info annotations.lst -vec coffeeCup.vec -num 900 -w 80 -h 40]
-6. Conduct cascade training [opencv_traincascade -data classifier -vec coffeeCup.vec -bg negatives.txt -numStages 1 -minHitRate 0.8 -maxFalseAlarmRate 0.5 -numPos 200 -numNeg 50 -w 80 -h 40 -mode ALL -precalcValBufSize 1024 -precalcIdxBufSize 1024]
+4. Generate complete positive images to train on [mkdir positives && cd positives && opencv_createsamples -img ../positive_source/'image-name'.jpg -bg ../negatives.txt -info annotations.lst -maxxangle 0.5 -maxyangle 0.5 -maxzangle 2.0 -w 80 -h 40]
+5. Convert annotations.lst to vector file [cd .. && touch coffeeCup.vec && opencv_createsamples -info positives/annotations.lst -vec coffeeCup.vec -num 900 -w 80 -h 40]
+6. Conduct cascade training [mkdir classifier && opencv_traincascade -data classifier -vec coffeeCup.vec -bg negatives.txt -numStages 1 -minHitRate 0.8 -maxFalseAlarmRate 0.5 -numPos 10 -numNeg 5 -w 80 -h 40 -mode ALL -precalcValBufSize 1024 -precalcIdxBufSize 1024]
 
 ## References:
 
 [Tutorial: OpenCV harrtraining(Rapid Object Detection with a Cascade of Boosted Classifiers Based on Haar-like Features.)](note.sonots.com/SciSoftware/haartraining.html)
 
-[Train Your Own OpenCV Haar Classifier](http://coding-robin.de/2013/07/22/train-your-own-opencv-haar-classifier.html)
+[Train Your Own OpenCV Haar Classifier](http://coding-robin.de/2013/07/22/train-your-own-opencv-haar-classifier.html) : with js script to test cascade file for static files with box drawing around target object.
 
 [How to Install OpenCV on Ubuntu](http://www.pyimagesearch.com/2016/10/24/ubuntu-16-04-how-to-install-opencv/)
 
@@ -82,4 +82,4 @@ To be accurate, 1000 positives and 5000 negatives are suggested in some articles
 
 [Haar Cascade Training Tutorial](http://www.trevorsherrard.com/Haar_training.html)
 
-[Cascade Classifier Training](http://docs.opencv.org/2.4/doc/user_guide/ug_traincascade.html#positive-samples)
+[Cascade Classifier Training](http://docs.opencv.org/2.4/doc/user_guide/ug_traincascade.html#positive-samples) : with python script to test cascade file using webcam in real-time with box drawing around target object.
