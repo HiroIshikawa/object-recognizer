@@ -57,7 +57,16 @@ Quick note on Cascade Classifier with OpenCV:
   4. Haar-like feature parameters: mode (BASIC:use only upright features, or ALL:full set of upright and 45 degree rotatefeature set).
   5. Local Binary Patterns parameters: no param available
 
+We sampled 80 images of coffee cup and 1000 negatives for testing out how the cascade works.
+To be accurate, 1000 positives and 5000 negatives are suggested in some articles.
+
+
+## Cascade Classifier Testing Process
+
+1. 
+
 ## References:
 
 [Tutorial: OpenCV harrtraining(Rapid Object Detection with a Cascade of Boosted Classifiers Based on Haar-like Features.)](note.sonots.com/SciSoftware/haartraining.html)
 
+[Train Your Own OpenCV Haar Classifier](http://coding-robin.de/2013/07/22/train-your-own-opencv-haar-classifier.html)
