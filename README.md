@@ -77,3 +77,9 @@ To be accurate, 1000 positives and 5000 negatives are suggested in some articles
 [Train Your Own OpenCV Haar Classifier](http://coding-robin.de/2013/07/22/train-your-own-opencv-haar-classifier.html)
 
 [How to Install OpenCV on Ubuntu](http://www.pyimagesearch.com/2016/10/24/ubuntu-16-04-how-to-install-opencv/)
+
+[Creating a Cascade of Haar-Like Classifiers: Step by Step](https://www.cs.auckland.ac.nz/~m.rezaei/Tutorials/Creating_a_Cascade_of_Haar-Like_Classifiers_Step_by_Step.pdf)
+
+[Haar Cascade Training Tutorial](http://www.trevorsherrard.com/Haar_training.html)
+
+[Cascade Classifier Training](http://docs.opencv.org/2.4/doc/user_guide/ug_traincascade.html#positive-samples)
