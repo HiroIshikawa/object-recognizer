@@ -51,11 +51,11 @@ To be accurate, 1000 positives and 5000 negatives are suggested in some articles
 ## Cascade Classifier Testing Process
 
 1. Get negative sample images and put it in './negatives' (NOT containing object that you want to recognize)
-2. Get a source positive sample image and put it in './positive_source' (containing object that you want to recognize)
+2. Get a source positive sample image ('pos.jpg') and put it in './positive_source' (containing object that you want to recognize)
 3. Generate .txt for negative samples [find ./negatives -iname "*.jpg" > negatives.txt]
-4. Generate complete positive images to train on [mkdir positives && cd positives && opencv_createsamples -img ../positive_source/'image-name'.jpg -bg ../negatives.txt -info annotations.lst -maxxangle 0.5 -maxyangle 0.5 -maxzangle 2.0 -w 80 -h 40]
-5. Convert annotations.lst to vector file [cd .. && touch coffeeCup.vec && opencv_createsamples -info positives/annotations.lst -vec coffeeCup.vec -num 900 -w 80 -h 40]
-6. Conduct cascade training [mkdir classifier && opencv_traincascade -data classifier -vec coffeeCup.vec -bg negatives.txt -numStages 1 -minHitRate 0.8 -maxFalseAlarmRate 0.5 -numPos 10 -numNeg 5 -w 80 -h 40 -mode ALL -precalcValBufSize 1024 -precalcIdxBufSize 1024]
+4. Generate complete positive images to train on [mkdir positives && cd positives && opencv_createsamples -img ../positive_source/pos.jpg -bg ../negatives.txt -info annotations.lst -maxxangle 0.5 -maxyangle 0.5 -maxzangle 2.0 -num 2950]
+5. Convert annotations.lst to vector file [cd .. && touch coffeeCup.vec && opencv_createsamples -info positives/annotations.lst -vec coffeeCup.vec -num 2900 -w 20 -h 20]
+6. Conduct cascade training [mkdir classifier && opencv_traincascade -data classifier -vec coffeeCup.vec -bg negatives.txt -numStages 10 -minHitRate 0.99 -maxFalseAlarmRate 0.5 -numPos 2000 -numNeg 1000 -w 20 -h 20 -mode ALL -precalcValBufSize 1024 -precalcIdxBufSize 1024]
 
 ## References:
 
