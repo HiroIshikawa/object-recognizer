@@ -11,7 +11,7 @@ numbering = 0
 iterations = 100
 
 # iterate the txt file contains urls line by line
-for url in urls:
+for url in urls.split('\n'):
 	# notify which iteration you are in
 	print iterations
 	# make a string for a path name to write the file in
