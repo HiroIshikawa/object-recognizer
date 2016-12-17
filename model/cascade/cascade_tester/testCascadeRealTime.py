@@ -17,15 +17,15 @@ def box(rects, img):
         cv2.rectangle(img, (x1, y1), (x2, y2), (127, 255, 0), 2)
     cv2.imwrite('one.jpg', img);
 
-# # cap = cv2.VideoCapture(0)
-# # cap.set(3,400)
-# # cap.set(4,300)
+cap = cv2.VideoCapture(0)
+cap.set(3,400)
+cap.set(4,300)
 
-# # while(True):
-# #     ret, img = cap.read()
-#     rects, img = detect(img)
-#     box(rects, img)
-#     cv2.imshow("frame", img)
-#     if(cv2.waitKey(1) & 0xFF == ord('q')):
-# 	break
+while(True):
+    ret, img = cap.read()
+    rects, img = detect(img)
+    box(rects, img)
+    cv2.imshow("frame", img)
+    if(cv2.waitKey(1) & 0xFF == ord('q')):
+	break
 

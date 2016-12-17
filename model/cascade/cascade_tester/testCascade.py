@@ -6,7 +6,7 @@ imagePath = sys.argv[1]
 cascPath = sys.argv[2]
 
 def detect(cascade, img):
-    rects = cascade.detectMultiScale(img, 1.3, 4, cv2.cv.CV_HAAR_SCALE_IMAGE, (20,20))
+    rects = cascade.detectMultiScale(img, 1.3, 4, cv2.cv.CV_HAAR_SCALE_IMAGE, (300,600))
 
     if len(rects) == 0:
         return [], img
@@ -16,7 +16,7 @@ def detect(cascade, img):
 def box(rects, img):
     for x1, y1, x2, y2 in rects:
         cv2.rectangle(img, (x1, y1), (x2, y2), (127, 255, 0), 2)
-    cv2.imwrite('one.jpg', img);
+    cv2.imwrite('boxed_'+imagePath, img);
 
 
 # Create the haar cascade
@@ -30,5 +30,5 @@ rects, img = detect(cascade, gray)
 box(rects, img)
 
 
-cv2.imshow("Cups found", image)
-cv2.waitKey(0)
+#cv2.imshow("Cups found", image)
+#cv2.waitKey(0)
