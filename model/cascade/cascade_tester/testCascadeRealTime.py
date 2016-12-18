@@ -5,7 +5,7 @@ import cv2
 
 def detect(img):
     cascade = cv2.CascadeClassifier("cascade.xml")
-    rects = cascade.detectMultiScale(img, 1.3, 4, cv2.cv.CV_HAAR_SCALE_IMAGE, (20,20))
+    rects = cascade.detectMultiScale(img, 1.3, 4, cv2.cv.CV_HAAR_SCALE_IMAGE, (30,60))
 
     if len(rects) == 0:
         return [], img
