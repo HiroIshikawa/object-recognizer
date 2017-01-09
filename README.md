@@ -48,7 +48,7 @@ Quick note on Cascade Classifier with OpenCV:
 
 To be accurate, 1000 positives and 5000 negatives are suggested in some articles.
 
-## Cascade Classifier Testing Process
+## Cascade Classifier Training Process (Commands and Arguments)
 
 1. Get negative sample images and put it in './negatives' (NOT containing object that you want to recognize)
 2. Get a source positive sample image ('pos.jpg') and put it in './positive_source' (containing object that you want to recognize)
