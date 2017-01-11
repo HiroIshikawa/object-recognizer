@@ -79,3 +79,5 @@ $ python testCascadeRealTime.py {cascade object width} {cascade object height} {
 [Using AWS to Train Cascade Classifier](https://github.com/kburnham/DAND-Right-Whale-Identification/blob/master/Using%20AWS%20to%20Train%20a%20Cascade%20Classifier.md)
 
 [Creating your own Haar Cascade OpenCV Python Tutorial](https://pythonprogramming.net/haar-cascade-object-detection-python-opencv-tutorial/)
+
+[Train your own OpenCV Haar classifier](https://github.com/mrnugget/opencv-haar-classifier-training)
