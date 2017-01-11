@@ -79,10 +79,13 @@ To be accurate, 1000 positives and 5000 negatives are suggested in some articles
 
 Since the code of cascade training itself is not optimzed for multi-core processing, it may not be possible to improve the computation time by adding more cores on the DigitalOcean server. Benchmark is for varyfing this assumption.
 
+Be aware that to train, the size of positive image should be the same for the arguments -w and -h in the whole process of training. If you have multiple positive images, you should crop the image in the same ratio of width and height.
+
 ## Test Cascade
 
 $ python testCascadeRealTime.py 20 50 1.1 22 800 600
 $ python testCascadeRealTime.py {cascade object width} {cascade object height} {scale factor} {minimum neighbors} {webcam frame width} {webcam frame height}
+
 
 ## References:
 
