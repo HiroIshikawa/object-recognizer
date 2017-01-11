@@ -57,6 +57,11 @@ To be accurate, 1000 positives and 5000 negatives are suggested in some articles
 5. Convert annotations.lst to vector file [cd .. && touch object.vec && opencv_createsamples -info positives/annotations.lst -vec object.vec -num 2900 -w 30 -h 60]
 6. Conduct cascade training [mkdir classifier && opencv_traincascade -data classifier -vec object.vec -bg negatives.txt -numStages 15 -numPos 2000 -numNeg 1000 -w 30 -h 60 -mode ALL -precalcValBufSize 1024 -precalcIdxBufSize 1024]
 
+## Test Cascade
+
+$ python testCascadeRealTime.py 20 50 1.1 22 800 600
+$ python testCascadeRealTime.py {cascade object width} {cascade object height} {scale factor} {minimum neighbors} {webcam frame width} {webcam frame height}
+
 ## References:
 
 [Tutorial: OpenCV harrtraining(Rapid Object Detection with a Cascade of Boosted Classifiers Based on Haar-like Features.)](note.sonots.com/SciSoftware/haartraining.html)
