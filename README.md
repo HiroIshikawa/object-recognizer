@@ -76,14 +76,11 @@ To be accurate, 1000 positives and 5000 negatives are suggested in some articles
 ## Cascade Training Benchmark 
 
 - 16GB (8 CPU) on Digital Ocean
-  - -w 40 -h 80
-  - 2048 buffer size
-    - Result: precalculation time = 37, 
-  - 4056 buffer size
-    - 1: 
-      - Result: precalculation time = 64, 
-    - 2: 
-      - Result: precalculation time = 48, 
+  - 20x20: gained nearly 10e-5 at stage 25 for about 10 hours running.
+    - result of cascade quality: only sensitive to the 20x20 scale window.
+    - to find cans standing up or lying down, need different cascades for eash.
+  - 20x40: in progress
+  - 40x20: to do
 
 Since the code of cascade training itself is not optimzed for multi-core processing, it may not be possible to improve the computation time by adding more cores on the DigitalOcean server. Benchmark is for varyfing this assumption.
 
