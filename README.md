@@ -53,17 +53,25 @@ To be accurate, 1000 positives and 5000 negatives are suggested in some articles
 1. Get negative sample images and put it in './negative_images' (NOT containing object that you want to recognize)
 2. Get source positive sample images and put it in './positive_images' (containing object that you want to recognize)
 3. Generate .txt for negative samples 
+
       `$ find ./negative_images -iname "*.jpg" > negatives.txt`
+
 4. Generate .txt for positive samples 
+
       `$ find ./positive_images -iname "*.jpg" > positives.txt`
+
 5. To generate vec files from the samples, run 
+
       `$ perl bin/createsamples.pl positives.txt negatives.txt samples 3000 "opencv_createsamples -bgcolor 0 -bgthresh 0 -maxxangle 1.1 -maxyangle 1.1 maxzangle 0.5 -maxidev 40 -w 40 -h 80"`
+
 6. To merge the multiple vector files into one, run
+
       `$ python ./tools/mergevec.py -v samples/ -o samples.vec`
+
 7. Conduct cascade training
+
       `$ mkdir classifier`
       `$ opencv_traincascade -data classifier -vec object.vec -bg negatives.txt -numStages 15 -numPos 2000 -numNeg 1000 -w 30 -h 60 -mode ALL -precalcValBufSize 1024 -precalcIdxBufSize 1024`
-
 
 ## Cascade Training Benchmark 
 
@@ -80,6 +88,7 @@ To be accurate, 1000 positives and 5000 negatives are suggested in some articles
 Since the code of cascade training itself is not optimzed for multi-core processing, it may not be possible to improve the computation time by adding more cores on the DigitalOcean server. Benchmark is for varyfing this assumption.
 
 Be aware that to train, the size of positive image should be the same for the arguments -w and -h in the whole process of training. If you have multiple positive images, you should crop the image in the same ratio of width and height.
+
 
 ## Test Cascade
 
@@ -108,3 +117,5 @@ $ python testCascadeRealTime.py {cascade object width} {cascade object height} {
 [Train your own OpenCV Haar classifier](https://github.com/mrnugget/opencv-haar-classifier-training)
 
 [Strategy to Make Cascade Training Fast](http://answers.opencv.org/question/7141/about-traincascade-paremeters-samples-and-other/) 
+
+[Official Tutorial for Cascade Training](http://docs.opencv.org/3.2.0/dc/d88/tutorial_traincascade.html)
