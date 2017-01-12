@@ -25,6 +25,7 @@ Training Configurations
 - Z-dimension angle (related to rotation level), -maxzangle 2.0 
 - Number of samples to generate
 
+
 sample_w = argv[1]		# -w
 sample_h = argv[2] 		# -h
 z_angle = argv[3]  		# -maxzangle
