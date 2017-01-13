@@ -70,15 +70,11 @@ Quick note on Cascade Classifier with OpenCV:
 
 1. Get negative sample images and put it in './negative_images' (NOT containing object that you want to recognize)
 2. Get source positive sample images and put it in './positive_images' (containing object that you want to recognize)
-3. Generate .txt for negative samples 
-
-      `$ find ./negative_images -iname "*.jpg" > negatives.txt`
-
-4. To generate vec files from the samples, run 
+3. To generate vec files from the samples, run 
 
       `$ python bin/build_train.py`
 
-5. Conduct cascade training
+4. Conduct cascade training
 
       `$ opencv_traincascade -data classifier -vec object.vec -bg negatives.txt -numStages 15 -numPos 2000 -numNeg 1000 -w 30 -h 60 -mode ALL -precalcValBufSize 1024 -precalcIdxBufSize 1024`
 

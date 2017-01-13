@@ -26,6 +26,10 @@ try:
 except OSError:
     pass
 
+# Generate list of negatives
+command = "find ./negative_images -iname '*.jpg' > negatives.txt"
+os.system(command)
+
 """ 
 Training Configurations
 - Dimention size of samples train, -w -h
