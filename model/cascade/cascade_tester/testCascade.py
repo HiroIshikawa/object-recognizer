@@ -6,7 +6,7 @@ imagePath = sys.argv[1]
 cascPath = sys.argv[2]
 
 def detect(cascade, img):
-    rects = cascade.detectMultiScale(img, 1.3, 4, cv2.cv.CV_HAAR_SCALE_IMAGE, (300,600))
+    rects = cascade.detectMultiScale(img, 1.1, 3, cv2.cv.CV_HAAR_SCALE_IMAGE, (20,40))
 
     if len(rects) == 0:
         return [], img
