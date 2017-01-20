@@ -52,12 +52,6 @@
     * The good acceptance ratio is nearly 10e-5. Beyond that, it's over training and cascade can become too sensitve to particular features of positive samples.
 
 
-
-The cascade works well in the dark background for now. May be we should make the cascade background color configuration to be inverted so that the bright color foregorund cans turning to be dark on the bright background.
-
-Building benchmarking tools is in progress of designing.
-
-
 ## Test Cascade
 
       `$ python testCascadeRealTime.py {cascade object width} {cascade object height} {scale factor} {minimum neighbors} {webcam frame width} {webcam frame height}`
@@ -82,3 +76,5 @@ For example,
 [Train your own OpenCV Haar classifier](https://github.com/mrnugget/opencv-haar-classifier-training) - Another well written step by step guide to train cascade. Original source of the vecter merge code.
 
 [Strategy to Make Cascade Training Fast](http://answers.opencv.org/question/7141/about-traincascade-paremeters-samples-and-other/) - Explains insights to configure the parameters better to get more accurate result of traininig.
+
+[How to run a Python script in the background even after I logout SSH?](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=how%20to%20keep%20running%20python%20script%20on%20server%20withtou%20ssh%20connection)
