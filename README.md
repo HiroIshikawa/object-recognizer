@@ -32,7 +32,7 @@
 
 4. Conduct cascade training
 
-      `$ opencv_traincascade -data classifier -vec object.vec -bg negatives.txt -numStages 15 -numPos 2000 -numNeg 1000 -w 30 -h 60 -mode ALL -precalcValBufSize 1024 -precalcIdxBufSize 1024`
+      `$ opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numStages 15 -numPos 2900 -numNeg 1450 -w 20 -h 40 -mode ALL -precalcValBufSize 1024 -precalcIdxBufSize 1024`
 
 
 ## How to train better cascade

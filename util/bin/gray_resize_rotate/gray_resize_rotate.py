@@ -7,7 +7,8 @@ from sys import argv
 
 w = int(argv[1])
 h = int(argv[2])
-is_parallel = argv[3]
+is_rorate = argv[3]
+is_parallel = argv[4]
 
 shutil.rmtree('./output')
 os.system('mkdir output')
@@ -35,16 +36,19 @@ def process(filename, key, w, h):
 
     gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     gray_resized_image = cv2.resize(gray_image, (w, h))
-    if is_parallel=='y':
-        if i%2==0:
-            angle = 90
+    if is_rorate=='y':
+        if is_parallel=='y':
+            if i%2==0:
+                angle = 90
+            else:
+                angle = 270
         else:
-            angle = 270
+            if i%2==0:
+                angle = 0
+            else:
+                angle = 180
     else:
-        if i%2==0:
-            angle = 0
-        else:
-            angle = 180
+        angle = 0
     gray_resized_rotated_image = rotate_bound(gray_resized_image, angle)
     print("writing..")
     print(gray_resized_rotated_image)
