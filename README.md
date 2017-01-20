@@ -78,3 +78,5 @@ For example,
 [Strategy to Make Cascade Training Fast](http://answers.opencv.org/question/7141/about-traincascade-paremeters-samples-and-other/) - Explains insights to configure the parameters better to get more accurate result of traininig.
 
 [How to run a Python script in the background even after I logout SSH?](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=how%20to%20keep%20running%20python%20script%20on%20server%20withtou%20ssh%20connection)
+
+[SSH Essentials: Working with SSH Servers, Clients, and Keys](https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys)

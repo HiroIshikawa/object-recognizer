@@ -18,9 +18,33 @@ import xml.etree.ElementTree
 # 4. laying down 0 deg (20x30)
 # 5. laying down 180 deg (20x30)
 
-# Scoring strategy to find a optimal box to approach
+# Voting strategy to find a optimal box to approach
 # 1. the bigger box -> the clooser
 # 2. the more box in one area -> higher possibility of object
+# 3. smaller relative range to the center -> less roration required
+
+# Take an image every n seconds
+# Analyse the image to position objects
+# If found, stop taking images until finishing approaching to object procedure
+# Pick an object to approach in the objects detected in the voting strategy
+# (Can we machine learn this process?? : deifne "states, action, rewards, and policy")
+# Send relative units to rotate to controller unit
+# Should have mechanical strategy to avoid stuck in a situation
+# * after n attempts, should conduct random walk
+# Get back signal of completion of approach attempt
+# Loop over taking an image
+
+# We should setup min/max thresholds of box size 
+# to register it as a candidate of the voting process
+
+# False negatives <- random walk
+# False positives <- cap, averaging multiple images
+# *** solution should largely done by making the cascade better though
+# *** mastering cascade training
+
+# Helping the robot to navigate to things?
+# "Trasing mode": given a particular object, it start follows the particular signiture
+# (We should not pick up gaverage from ground)
 
 # Detect objects maching with a given cascade
 def detect(cascade, img):
@@ -94,7 +118,7 @@ cascPath = 'cascades/cascade.xml' #temporal implementation for test
 cascade = cv2.CascadeClassifier(cascPath)
 
 # for imagePath
-for (i, imagePath) in enumerate(glob.iglob('subjects/*.jpg')):
+for (i, imagePath) in enumerate(glob.iglob('feeds/*.jpg')):
 	print(str(i)+'.jpg')
 
 	# Read the image
@@ -110,14 +134,14 @@ for (i, imagePath) in enumerate(glob.iglob('subjects/*.jpg')):
 	img_center = centering_img(img)
 
 	# Get the stats of the each box
-	# List of dictionary
-	# [{'box_size', 'box_center', 'box_to_center'}]
 	num_boxes = len(rects)
 	boxes = []
 	for k in range(num_boxes):
-		boxes.append({'box_size': (0,0),'box_center':(0,0),'box_to_center':(0,0)})
+		boxes.append({'box_id':0,'box_size': (0,0),'box_center':(0,0),'box_to_center':(0,0)})
 
 	for i, rect in enumerate(rects):
+		# Record box id
+		boxes[i]['box_id'] = i
 		# Get the size of the box
 		box_size = sizing_box(rect)
 		boxes[i]['box_size'] = box_size
@@ -130,5 +154,11 @@ for (i, imagePath) in enumerate(glob.iglob('subjects/*.jpg')):
 
 	for box in boxes:
 		print(box)
+
+	# Voting
+	# Weights for each property
+	# Normalize each points first and multiply pre-weights
+
+	# The optimal box and its relative x-coordinate to approach
 
 	print('')
