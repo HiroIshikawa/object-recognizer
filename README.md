@@ -64,9 +64,10 @@ For example,
 ## Running background process on server
 
   * access server: `$ ssh userid@remoteserver`
-  * run script with nohup (dont forget & at the end): `$ nohup yourscript &`
-  * to find the process run to get process ID : `ps -ef |grep nohup`
+  * run script with nohup (dont forget & at the end): `$ nohup opencv_traincascade.... &`
+  * to find the process run to get process ID : `ps auxwww|grep -i 'opencv_traincascade'`
   * to kill the process of the process ID : `kill -9 IDnumber`
+
 
 ## References:
 
