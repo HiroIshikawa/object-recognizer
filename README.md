@@ -61,6 +61,13 @@ For example,
       `$ python testCascadeRealTime.py 20 50 1.1 22 800 600`
 
 
+## Running background process on server
+
+  * access server: `$ ssh userid@remoteserver`
+  * run script with nohup (dont forget & at the end): `$ nohup yourscript &`
+  * to find the process run to get process ID : `ps -ef |grep nohup`
+  * to kill the process of the process ID : `kill -9 IDnumber`
+
 ## References:
 
 [How to Install OpenCV on Ubuntu](http://www.pyimagesearch.com/2016/10/24/ubuntu-16-04-how-to-install-opencv/) - How to instlal OpenCV on your machine.
