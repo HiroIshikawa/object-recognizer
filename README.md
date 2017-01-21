@@ -70,6 +70,13 @@ For example,
   * to kill the process of the process ID : `kill -9 IDnumber`
 
 
+## Issues and fixes log
+
+  * [Follow this link to install and debug the opwncv on raspberrypi]](http://www.pyimagesearch.com/2015/02/23/install-opencv-and-python-on-your-raspberry-pi-2-and-b/)
+  * To link, you should be in virtual env. If you wronglly linked outside of virtual env, you should be able to
+    unlink and activate to get in the virtual env and relink again. Make sure reboot the pi after this. Then test it.
+
+
 ## References:
 
 [How to Install OpenCV on Ubuntu](http://www.pyimagesearch.com/2016/10/24/ubuntu-16-04-how-to-install-opencv/) - How to instlal OpenCV on your machine.
