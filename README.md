@@ -28,7 +28,7 @@
 
 3. To generate vec files from the samples, run 
 
-      `$ python bin/build_train.py`
+      `$ python bin/build_training.py [sample_width] [sample_height] [z_angle_rotation] [num_of_saples_to_generate] [to_show_sample]`
 
 4. Conduct cascade training
 
