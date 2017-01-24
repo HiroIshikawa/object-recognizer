@@ -155,6 +155,25 @@ for (i, imagePath) in enumerate(glob.iglob('feeds/*.jpg')):
 	for box in boxes:
 		print(box)
 
+	# for each box, find the best one to approach
+	# 
+	if (boxes):
+		seq = [box['box_size'][0] * box['box_size'][1] for box in boxes]
+		# min(seq)
+		print("The max one: "+str(max(seq)))
+
+		maxSizeItem = max(boxes, key=lambda x:x['box_size'][0]*x['box_size'][1])
+		print("The item which has max size: "+str(maxSizeItem))
+
+		if (maxSizeItem['box_to_center'][0] > 0):
+			print("Turn Right")
+		elif (maxSizeItem['box_to_center'][0] < 0):
+			print("Turn Left")
+		else:
+			print("Go Straight")
+
+
+
 	# Voting
 	# Weights for each property
 	# Normalize each points first and multiply pre-weights
