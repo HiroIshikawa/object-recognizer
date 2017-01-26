@@ -75,6 +75,25 @@ For example,
   * [Follow this link to install and debug the opwncv on raspberrypi]](http://www.pyimagesearch.com/2015/02/23/install-opencv-and-python-on-your-raspberry-pi-2-and-b/)
   * To link, you should be in virtual env. If you wronglly linked outside of virtual env, you should be able to
     unlink and activate to get in the virtual env and relink again. Make sure reboot the pi after this. Then test it.
+  * 1. unlink in the virtual env | .
+    `(cv)pi$ cd ~/.virtualenvs/cv/lib/python2.7/site-packages/`
+    `(cv)pi$ unlink cv2.so`
+    2. link again in virtual environment. 
+    `(cv)pi$ ln -s /usr/local/lib/python2.7/site-packages/cv2.so cv2.so`
+    3. deactivate 
+    `(cv)pi$ deactivate`
+    4. sudo reboot 
+    `pi$ sudo reboot`
+    5. reacess 
+    `yourmachine$ ssh pi@remoteaddress`
+    6. go to virtual end (workon cv)
+    `pi$ workon cv`
+    7. open python interpreter and test whetehr opencv works
+    `(cv)pi$ python`
+    `>>> import cv2`
+  * what caused that?: 
+    * carefully observe how we installed the open cv (http://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/)
+  * $ scp -r path/to/send/from to@remoteaddress:~/path/to/receive
 
 
 ## References:
@@ -96,3 +115,11 @@ For example,
 [How to run a Python script in the background even after I logout SSH?](https://www.google.com/webhp?sourceid=chrome-instant&ion=1&espv=2&ie=UTF-8#q=how%20to%20keep%20running%20python%20script%20on%20server%20withtou%20ssh%20connection)
 
 [SSH Essentials: Working with SSH Servers, Clients, and Keys](https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys)
+
+[Pi Camera Basic Recipes](http://picamera.readthedocs.io/en/release-1.10/recipes1.html)
+
+[Pi Camera Advanced Recipes](http://picamera.readthedocs.io/en/release-1.11/recipes2.html)
+
+[Install guide: Raspberry Pi 3 + Raspbian Jessie + OpenCV 3](http://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/)
+
+[Common errors using Pi Camera module](http://www.pyimagesearch.com/2016/08/29/common-errors-using-the-raspberry-pi-camera-module/)

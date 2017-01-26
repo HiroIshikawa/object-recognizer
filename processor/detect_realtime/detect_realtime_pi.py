@@ -6,6 +6,10 @@ import numpy as np
 import time
 import threading
 
+# from picamera.array import PiRGBArray
+# from picamera import PiCamera
+# import time
+
 obj_w = int(argv[1])
 obj_h = int(argv[2])
 scale_factor = float(argv[3])
@@ -74,6 +78,7 @@ def box(rects, img):
     """
     for x1, y1, x2, y2 in rects:
         cv2.rectangle(img, (x1, y1), (x2, y2), (127, 255, 0), 2)
+    return img
     # cv2.imwrite('one.jpg', img);
 
 def centering_img(img):
@@ -127,8 +132,8 @@ def mean(l):
         return 0.0
     return sum(l)/len(l)
 
-def accm_position(candidates):
-    threading.Timer(0.5, accm_position, args=[candidates]).start()
+def navigate(candidates):
+    threading.Timer(0.5, navigate, args=[candidates]).start()
     # avg_pos = reduce(lambda x, y: x + y, candidates) / len(candidates)
     avg_pos = mean(candidates)
     candidates[:] = []
@@ -141,15 +146,50 @@ def accm_position(candidates):
     # print("Navigation: "+str(avg_pos)+" units")
     # return True
 
+def record(recording):
+    threading.Timer(1, record, args=[recording]).start()
+    cv2.imwrite("./recording/record.jpg",recording[0])
+
+# Start capturing
 cap = cv2.VideoCapture(0)
 cap.set(3,win_w)
 cap.set(4,win_h)
 
-candidates = []
 
-accm_position(candidates)
+# initialize the camera and grab a reference to the raw camera capture
+# camera = PiCamera()
+# camera.resolution = (640, 480)
+# camera.framerate = 32
+# rawCapture = PiRGBArray(camera, size=(640, 480))
+
+# allow the camera to warmup
+# time.sleep(0.1)
+
+
+# initialize the nvagation system for different position
+candidates = []
+navigate(candidates)
+
+# numpy array to temporaly store the current working image
+# this used to recording some images while processing
+recording = []
+ret, init_image = cap.read()
+recording.append(init_image)
+record(recording)
+
+recording = []
+with picamera.array.PiRGBArray(camera) as stream:
+    camera.capture(stream, format='bgr')
+    # At this point the image is available as stream.array
+    init_image = stream.array
+recording.append(init_image)
+record(recording)
 
 while(True):
+# for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
+    # grab the raw NumPy array representing the image, then initialize the timestamp
+    # and occupied/unoccupied text
+    # img = frame.array
     ret, img = cap.read()
     imshape = img.shape
     vertices = np.array([[(0,imshape[0]),(0,int(imshape[0]/2)), 
@@ -158,7 +198,7 @@ while(True):
     img = region_of_interest(img, vertices)
 
     rects, img = detect(img)
-    box(rects, img)
+    img = box(rects, img)
 
     flag = False
 
@@ -204,6 +244,8 @@ while(True):
         # print("The item which has max size: "+str(maxSizeItem))
 
         candidates.append(maxSizeItem['box_to_center'][0])
+
+    recording[0] = img
 
     cv2.imshow("frame", img)
     if(cv2.waitKey(1) & 0xFF == ord('q')):
