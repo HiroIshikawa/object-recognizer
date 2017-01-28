@@ -94,7 +94,10 @@ For example,
   * what caused that?: 
     * carefully observe how we installed the open cv (http://www.pyimagesearch.com/2016/04/18/install-guide-raspberry-pi-3-raspbian-jessie-opencv-3/)
   * $ scp -r path/to/send/from to@remoteaddress:~/path/to/receive
-
+  * Installing the smbus tools in the virtualenvironment.
+    * At this point, the most promising way to do fix this is to create new virtual environment wiht global system config.
+    * [Use this guide](http://stackoverflow.com/questions/12079607/make-virtualenv-inherit-specific-packages-from-your-global-site-packages)
+    * [This too](http://www.pyimagesearch.com/2016/10/24/ubuntu-16-04-how-to-install-opencv/)
 
 ## References:
 
