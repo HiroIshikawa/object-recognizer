@@ -127,26 +127,40 @@ def mean(l):
         return 0.0
     return sum(l)/len(l)
 
-def accm_position(candidates):
-    threading.Timer(0.5, accm_position, args=[candidates]).start()
-    # avg_pos = reduce(lambda x, y: x + y, candidates) / len(candidates)
-    avg_pos = mean(candidates)
-    candidates[:] = []
-    if (avg_pos > 0):
+def command(avg_pos):
+    if (avg_pos > 10):
         print("Turn Right: Rotate "+str(avg_pos)+" units")
-    elif (avg_pos < 0):
+    elif (avg_pos < -10):
         print("Turn Left: Rorate "+str(avg_pos)+" units")
     else:
         print("Go Straight")
-    # print("Navigation: "+str(avg_pos)+" units")
-    # return True
+    # time.sleep(1)
 
+def accm_position(candidates):
+    threading.Timer(0.5, accm_position, args=[candidates]).start()
+    # print("threading...")      
+    global command_flag
+    global avg_pos
+    if candidates:
+        # command(candidates)
+        avg_pos = mean(candidates)
+        # print("Candi found: "+str(avg_pos))
+        command_flag = True
+        # print(command_flag)
+        candidates[:] = []
+    else:
+        # command_flag = False
+        pass
+    
 cap = cv2.VideoCapture(0)
 cap.set(3,win_w)
 cap.set(4,win_h)
 
+global command_flag
+global avg_pos
+command_flag = False
+avg_pos = 0.
 candidates = []
-
 accm_position(candidates)
 
 while(True):
@@ -204,6 +218,12 @@ while(True):
         # print("The item which has max size: "+str(maxSizeItem))
 
         candidates.append(maxSizeItem['box_to_center'][0])
+
+    if command_flag:
+        # print("command activated")
+        command(avg_pos)
+        command_flag = False
+        time.sleep(1)
 
     cv2.imshow("frame", img)
     if(cv2.waitKey(1) & 0xFF == ord('q')):

@@ -9,6 +9,24 @@ import threading
 from picamera.array import PiRGBArray
 from picamera import PiCamera
 
+import smbus
+import time
+# for RPI version 1, use "bus = smbus.SMBus(0)"
+bus = smbus.SMBus(1)
+
+# This is the address we setup in the Arduino Program
+address = 0x04
+
+def writeNumber(value):
+    bus.write_byte(address, value)
+    # bus.write_byte_data(address, 0, value)
+    return -1
+
+# def readNumber():
+#     number = bus.read_byte(address)
+#     # number = bus.read_byte_data(address, 1)
+#     return number
+
 obj_w = int(argv[1])
 obj_h = int(argv[2])
 scale_factor = float(argv[3])
@@ -128,6 +146,26 @@ def pos_from_center(img_center, box_center):
     # print('position of box to y: '+str(box_rel_y))
     return (box_rel_x, box_rel_y)
 
+def command(avg_pos):
+    if (avg_pos > 10):
+        print("Turn Right: Rotate "+str(avg_pos)+" units")
+        var = 6
+        writeNumber(var)
+        print "RPI: Hi Arduino, I sent you", var
+    elif (avg_pos < -10):
+        print("Turn Left: Rorate "+str(avg_pos)+" units")
+        # left q = 5
+        var = 5
+        writeNumber(var)
+        print "RPI: Hi Arduino, I sent you", var
+    else:
+        print("Go Straight")
+        var = 1
+        writeNumber(var)
+        print "RPI: Hi Arduino, I sent you", var
+        print("Go Straight")
+    print('')
+
 def mean(l):
     if len(l)==0:
         return 0.0
@@ -136,14 +174,19 @@ def mean(l):
 def navigate(candidates):
     threading.Timer(0.5, navigate, args=[candidates]).start()
     # avg_pos = reduce(lambda x, y: x + y, candidates) / len(candidates)
-    avg_pos = mean(candidates)
-    candidates[:] = []
-    if (avg_pos > 0):
-        print("Turn Right: Rotate "+str(avg_pos)+" units")
-    elif (avg_pos < 0):
-        print("Turn Left: Rorate "+str(avg_pos)+" units")
+    global command_flag
+    global avg_pos
+    if candidates:
+        # command(candidates)
+        avg_pos = mean(candidates)
+        # print("Candi found: "+str(avg_pos))
+        command_flag = True
+        # print(command_flag)
+        candidates[:] = []
     else:
-        print("Go Straight")
+        # command_flag = False
+        pass
+
     # print("Navigation: "+str(avg_pos)+" units")
     # return True
 
@@ -156,7 +199,6 @@ def record(recording):
 # cap.set(3,win_w)
 # cap.set(4,win_h)
 
-
 # initialize the camera and grab a reference to the raw camera capture
 camera = PiCamera()
 camera.resolution = (win_w, win_h)
@@ -167,6 +209,10 @@ rawCapture = PiRGBArray(camera, size=(win_w, win_h))
 time.sleep(0.1)
 
 # initialize the nvagation system for different position
+global command_flag
+global avg_pos
+command_flag = False
+avg_pos = 0.
 candidates = []
 navigate(candidates)
 
@@ -250,6 +296,12 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
         # print("The item which has max size: "+str(maxSizeItem))
 
         candidates.append(maxSizeItem['box_to_center'][0])
+
+    if command_flag:
+        # print("command activated")
+        command(avg_pos)
+        command_flag = False
+        time.sleep(1)
 
     recording[0] = img
 
