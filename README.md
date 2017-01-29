@@ -115,11 +115,13 @@ For example,
     * Since I built it from source, I would use `ls
     * sudo make uninstall` in the path that I did `sudo make install`
     * the reason I did not install well enough was that `sudo nano /etc/apt/sources.list` and commnet out the last line as suggested to
-      run the command `sudo apt-get update` etc..
+      run the command `sudo apt-get update` etc.. [This is a reference](http://raspberrypi.stackexchange.com/questions/10600/apt-get-update-gives-me-errors-with-mirrordirector-raspbian-org)
     * I run into a trouble that I could not proceed the apt-get command and any other required command on pi.
       I decided to reflesh evrything from scratch to reinstall the environment.
     * Basiaclly what you need to get the pi back to factory version, you push shift when you are rebooting.
     * [This is a reference](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=104790)
+    * I got data corruption while reinstalling the OS. I decided to clean the SD card and remount the Raspbian OS again.
+    * It might be good idea to have an extra sd when any software related isseus happened.
 
 ## References:
 
