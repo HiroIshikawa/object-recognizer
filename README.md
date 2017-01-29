@@ -110,7 +110,17 @@ For example,
       * cropping better ( make sure include the outline of the object )
       * put more different positive images
       * train more stages
-      
+  * On uninstalling / reinstalling the opencv on pi
+    * I started following [this link](http://stackoverflow.com/questions/24598160/unistall-opencv-2-4-9-and-install-3-0-0)
+    * Since I built it from source, I would use `ls
+    * sudo make uninstall` in the path that I did `sudo make install`
+    * the reason I did not install well enough was that `sudo nano /etc/apt/sources.list` and commnet out the last line as suggested to
+      run the command `sudo apt-get update` etc..
+    * I run into a trouble that I could not proceed the apt-get command and any other required command on pi.
+      I decided to reflesh evrything from scratch to reinstall the environment.
+    * Basiaclly what you need to get the pi back to factory version, you push shift when you are rebooting.
+    * [This is a reference](https://www.raspberrypi.org/forums/viewtopic.php?f=29&t=104790)
+
 ## References:
 
 [How to Install OpenCV on Ubuntu](http://www.pyimagesearch.com/2016/10/24/ubuntu-16-04-how-to-install-opencv/) - How to instlal OpenCV on your machine.
