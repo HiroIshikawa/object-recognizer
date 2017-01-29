@@ -98,7 +98,19 @@ For example,
     * At this point, the most promising way to do fix this is to create new virtual environment wiht global system config.
     * [Use this guide](http://stackoverflow.com/questions/12079607/make-virtualenv-inherit-specific-packages-from-your-global-site-packages)
     * [This too](http://www.pyimagesearch.com/2016/10/24/ubuntu-16-04-how-to-install-opencv/)
-
+  * On installing opencv on the digital ocean/school server
+    * first of all, you need to access through school VPN if you are not on campus
+    * throughout this, we are using python2.7. opencv version may different in the environemnt.
+    * in my local environemnt, 2.4.10. On server (digital ocean, school), 3.1.0. On pi, 3.0.0. 
+    * following [this guide to install](http://www.pyimagesearch.com/2016/10/24/ubuntu-16-04-how-to-install-opencv/)
+    * completed the instllation process successfully.
+  * On running the training in the school server.
+    * should rebulid better precondition for the next training.
+    * the assumption to make better cascade training is
+      * cropping better ( make sure include the outline of the object )
+      * put more different positive images
+      * train more stages
+      
 ## References:
 
 [How to Install OpenCV on Ubuntu](http://www.pyimagesearch.com/2016/10/24/ubuntu-16-04-how-to-install-opencv/) - How to instlal OpenCV on your machine.
