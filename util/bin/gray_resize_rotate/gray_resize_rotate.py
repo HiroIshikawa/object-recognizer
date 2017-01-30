@@ -30,6 +30,14 @@ def rotate_bound(image, angle):
  
     return cv2.warpAffine(image, M, (nW, nH))
 
+def rotate(img,angle):
+    rows,cols = img.shape
+
+    M = cv2.getRotationMatrix2D((cols/2,rows/2),angle,1)
+    dst = cv2.warpAffine(img,M,(cols,rows))
+
+    return dst
+
 def process(filename, key, w, h):
 
     image = cv2.imread(filename)
@@ -49,7 +57,8 @@ def process(filename, key, w, h):
                 angle = 180
     else:
         angle = 0
-    gray_resized_rotated_image = rotate_bound(gray_resized_image, angle)
+    # gray_resized_rotated_image = rotate_bound(gray_resized_image, angle)
+    gray_resized_rotated_image = rotate(gray_resized_image, angle)
     print("writing..")
     print(gray_resized_rotated_image)
     print(filename)
