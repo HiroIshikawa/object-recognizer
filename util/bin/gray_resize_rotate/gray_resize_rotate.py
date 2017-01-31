@@ -7,6 +7,12 @@ import os
 import shutil
 
 def process(filename, key, w, h):
+    """
+    Resize, rotate, and gray scale the image given inputs.
+
+    Resize is applied before rotation so make sure the 
+    aspect of your inputs mathces with original image.
+    """
     image = Image.open(filename)
     resized_image = image.resize((w,h))
     if is_rorate=='y':
@@ -27,10 +33,10 @@ def process(filename, key, w, h):
     print(filename + ' converted')
     cv2.imwrite('./output/'+str(key)+'.jpg', resized_rotated_gray_image)
 
-w = int(argv[1])
-h = int(argv[2])
-is_rorate = argv[3]
-is_parallel = argv[4]
+w = int(argv[1])  # the width of output image before rotation
+h = int(argv[2])  # the height of output image before rotation
+is_rorate = argv[3]  # if 'y' rotation will be applied 
+is_parallel = argv[4]  # if 'y' the angle will be adjustd in 90 degree
 
 shutil.rmtree('./output')
 os.system('mkdir output')
