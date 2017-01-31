@@ -31,11 +31,11 @@
 
 2. Get source positive sample images and put it in './positive_images' (containing object that you want to recognize)
 
-3. To generate vec files from the samples, run 
+3. Generate vec files from the samples,
 
       `$ python bin/build_training.py [sample_width] [sample_height] [z_angle_rotation] [num_of_saples_to_generate] [to_show_sample]`
 
-4. Conduct cascade training
+4. Tarin cascade
 
       `$ opencv_traincascade -data classifier -vec samples.vec -bg negatives.txt -numStages 15 -numPos 2900 -numNeg 1450 -w 20 -h 40 -mode ALL -precalcValBufSize 1024 -precalcIdxBufSize 1024`
 
@@ -72,7 +72,7 @@ For example,
   * run script with nohup (dont forget & at the end): `$ nohup opencv_traincascade.... &`
   * to find the process run to get process ID : `ps auxwww|grep -i 'opencv_traincascade'`
   * this works too: `ps -eaf | grep opencv_traincascade`
-  * to kill the process of the process ID : `kill -9 IDnumber`
+  * to kill the process of the process ID : `kill -9 [ID number]`
 
 
 ## Issues and fixes log
