@@ -103,3 +103,5 @@ For example,
 [Common errors using Pi Camera module](http://www.pyimagesearch.com/2016/08/29/common-errors-using-the-raspberry-pi-camera-module/)
 
 [Visual Tracking via Reliable Memories](https://arxiv.org/abs/1602.01887)
+
+[Pillow Offcial Doc](http://pillow.readthedocs.io/en/3.1.x/reference/Image.html)
