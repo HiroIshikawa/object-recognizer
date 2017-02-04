@@ -23,7 +23,7 @@ for url in urls:
 	f = open(writePath,'wb')
 	try:
 		# retrieve resource with the url defined
-		response = urllib2.urlopen(url, timeout=0.1)
+		response = urllib2.urlopen(url, timeout=0.3)
 	except urllib2.URLError as err:
 		print('URL error happend')
 		pass
@@ -32,9 +32,11 @@ for url in urls:
 		pass
 	except socket.timeout:
 		pass
+	except ValueError:
+		pass
 	else:
 		# print response
-		print response
+		print(response)
 		# if image is loaded successfully
 		if response:
 			# read the image

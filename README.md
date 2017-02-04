@@ -105,3 +105,5 @@ For example,
 [Visual Tracking via Reliable Memories](https://arxiv.org/abs/1602.01887)
 
 [Pillow Offcial Doc](http://pillow.readthedocs.io/en/3.1.x/reference/Image.html)
+
+[On Performance of OpenCV: C++ vs. Python](http://stackoverflow.com/questions/13432800/does-performance-differs-between-python-or-c-coding-of-opencv)
